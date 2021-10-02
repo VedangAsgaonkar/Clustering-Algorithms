@@ -11,20 +11,20 @@ int main(){
     double* y_list = new double[400];
     for(int i=0 ; i<400 ; i++){        
         if(i<100){
-            x_list[i] = -5 + 7*drand48();
-            y_list[i] = -5 + 7*drand48();
+            x_list[i] = -5 + 4*drand48();
+            y_list[i] = -5 + 4*drand48();
         }
         else if(i<200){
-            x_list[i] = -5 + 7*drand48();
-            y_list[i] = 5 - 7*drand48();
+            x_list[i] = -5 + 4*drand48();
+            y_list[i] = 5 - 4*drand48();
         }
         else if(i<300){
-            x_list[i] = 5 - 7*drand48();
-            y_list[i] = -5 + 7*drand48();
+            x_list[i] = 5 - 4*drand48();
+            y_list[i] = -5 + 4*drand48();
         }
         else {
-            x_list[i] = 5 - 7*drand48();
-            y_list[i] = 5 - 7*drand48();
+            x_list[i] = 5 - 4*drand48();
+            y_list[i] = 5 - 4*drand48();
         }
     }
     std::cout << "type,x,y" << std::endl;

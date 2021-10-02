@@ -3,7 +3,9 @@
 #include <iterator>
 #include <tuple>
 #include <vector>
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <graphics.h>
 
 kMeansEstimator::kMeansEstimator(point *point_list, int n)
 {
@@ -26,11 +28,15 @@ kMeansEstimator::kMeansEstimator(double *xlist, double *ylist, int n)
 
 std::multimap<int,int> kMeansEstimator::cluster(int k, int iter) const
 {
+    int gd = DETECT, gm;
+    initgraph(&gd, &gm, NULL);
+
     std::vector<std::multimap<int, int>> set_clusters;
     std::vector<double> dispersions;
     int run_count = 3;
     for (int run = 0; run < run_count; run++)
     {
+        cleardevice();
         // getting the max and min x, y values
         double max_x = point_list[0].x;
         double min_x = point_list[0].x;
@@ -149,10 +155,33 @@ std::multimap<int,int> kMeansEstimator::cluster(int k, int iter) const
                 }
                 if (cnt != 0)
                 {
+                    setcolor(0);
+                    circle(250+50*means[i].x, 250+50*means[i].y,10);
+                    floodfill(250+50*means[i].x, 250+50*means[i].y,0);
                     means[i].x = x_sum / cnt;
                     means[i].y = y_sum / cnt;
                 }
             }
+    
+            for(int i=0; i<k ; i++){
+                std::cout << means[i] << std::endl;
+                setcolor(15);
+                circle(250+50*means[i].x, 250+50*means[i].y,10);
+                floodfill(250+50*means[i].x, 250+50*means[i].y,15);
+                auto itr1 = clusters.lower_bound(i);
+                auto itr2 = clusters.upper_bound(i);
+                setcolor(i+1);
+                while (itr1 != itr2)
+                {
+                    if (itr1->first == i)
+                    {
+                        circle(250+50*point_list[itr1->second].x, 250+50*point_list[itr1->second].y,5);
+                        floodfill(250+50*point_list[itr1->second].x, 250+50*point_list[itr1->second].y,i+1);
+                    }
+                    itr1++;
+                }
+            }
+            delay(300);
         }
 
         // find WCSS
@@ -189,7 +218,7 @@ std::multimap<int,int> kMeansEstimator::cluster(int k, int iter) const
             index = i;
         }
     }
-
+    closegraph();
     return set_clusters[index];
 }
 
