@@ -2,7 +2,7 @@
 #define _DENSITY_BASED_ESTIMATOR_H_
 
 #include "range_point.h"
-#include<map>
+#include <map>
 
 class densityBasedEstimator
 {
@@ -14,7 +14,7 @@ private:
 public:
     densityBasedEstimator(point *point_list, int n, double epsilon);
     densityBasedEstimator(double *xlist, double *ylist, int n, double epsilon);
-    std::multimap<int,int> cluster(int min_pts) const;
+    std::multimap<int, int> cluster(int min_pts) const;
     ~densityBasedEstimator();
 };
 
