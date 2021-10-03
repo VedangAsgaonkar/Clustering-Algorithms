@@ -1,11 +1,11 @@
-#include "kMeansEstimator.h"
+#include "kMeansEstimator.hpp"
 #include <map>
 #include <iterator>
 #include <tuple>
 #include <vector>
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <graphics.h>
+// #include <stdio.hpp>
+// #include <stdlib.hpp>
+// #include <graphics.hpp>
 
 kMeansEstimator::kMeansEstimator(point *point_list, int n)
 {

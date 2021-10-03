@@ -1,4 +1,4 @@
-#include "gaussianEstimator.h"
+#include "gaussianEstimator.hpp"
 #include <cmath>
 
 gaussianEstimator::gaussianEstimator(point *point_list, int n)

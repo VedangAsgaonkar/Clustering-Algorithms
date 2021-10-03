@@ -1,4 +1,4 @@
-#include "range_point.h"
+#include "range_point.hpp"
 
 range_point::range_point() : point()
 {

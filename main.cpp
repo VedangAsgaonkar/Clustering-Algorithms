@@ -2,10 +2,11 @@
 #include <map>
 #include <iterator>
 #include <cmath>
-#include "point.h"
-#include "kMeansEstimator.h"
-#include "densityBasedEstimator.h"
-#include "gaussianEstimator.h"
+#include "point.hpp"
+#include "kMeansEstimator.hpp"
+#include "densityBasedEstimator.hpp"
+#include "gaussianEstimator.hpp"
+#include "hierarchicalEstimator.hpp"
 
 int main()
 {
@@ -40,8 +41,8 @@ int main()
     // std::multimap<int, int> mp = k->cluster(4, 20);
     // densityBasedEstimator *d = new densityBasedEstimator(x_list,y_list,300,1);
     // std::multimap<int, int> mp = d->cluster(3);
-    gaussianEstimator* g = new gaussianEstimator(x_list,y_list,400);
-    std::multimap<int, int> mp = g->cluster(4, 20);
+    hierarchicalEstimator *h = new hierarchicalEstimator(x_list,y_list,400);
+    std::multimap<int, int> mp = h->cluster(1.0);
     for (auto i = mp.begin(); i != mp.end(); i++)
     {
         std::cout << i->first << "," <<x_list[i->second] << "," << y_list[i->second] << std::endl;

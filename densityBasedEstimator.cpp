@@ -1,4 +1,4 @@
-#include "densityBasedEstimator.h"
+#include "densityBasedEstimator.hpp"
 #include <queue>
 #include <iterator>
 #include <tuple>
@@ -35,10 +35,8 @@ densityBasedEstimator::densityBasedEstimator(double *xlist, double *ylist, int n
     this->epsilon = epsilon;
     for (int i = 0; i < n; i++)
     {
-        // std::cout << "0," << xlist[i] << "," << ylist[i] << std::endl;
         this->point_list[i].x = xlist[i];
         this->point_list[i].y = ylist[i];
-        this->point_list[i].label = point_list[i].label;
         this->point_list[i].index = i;
         for (int j = 0; j < i; j++)
         {
