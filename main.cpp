@@ -2,11 +2,13 @@
 #include <map>
 #include <iterator>
 #include <cmath>
+#include <cstdlib>
 #include "point.hpp"
 #include "kMeansEstimator.hpp"
 #include "densityBasedEstimator.hpp"
 #include "gaussianEstimator.hpp"
 #include "hierarchicalEstimator.hpp"
+#include "plotter.hpp"
 
 int main()
 {
@@ -43,8 +45,22 @@ int main()
     // std::multimap<int, int> mp = d->cluster(3);
     hierarchicalEstimator *h = new hierarchicalEstimator(x_list, y_list, 400);
     std::multimap<int, int> mp = h->cluster(1.0);
+    point *point_list = new point[400];
+    int j=0;
     for (auto i = mp.begin(); i != mp.end(); i++)
     {
+        point_list[j].x = x_list[i->second];
+        point_list[j].y = y_list[i->second];
+        point_list[j].label = to_string(i->first);
+        j++;
         std::cout << i->first << "," << x_list[i->second] << "," << y_list[i->second] << std::endl;
     }
+    initCanvas("Graph", 800, 800);
+    plotter p;
+    p.scatter(point_list,400);
+    // Circle c[400];
+    // for (int i = 0; i < 400; i++)
+    // {
+    //     c[i] = Circle(500 + 50* point_list[i].x, 500 + 50 * point_list[i].y, 3);
+    // }
 }

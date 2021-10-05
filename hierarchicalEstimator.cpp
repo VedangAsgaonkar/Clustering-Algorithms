@@ -65,7 +65,6 @@ std::multimap<int, int> hierarchicalEstimator::cluster(int k) const
 std::multimap<int, int> hierarchicalEstimator::cluster(double epsilon) const
 {
     std::priority_queue<edge, std::vector<edge>, std::function<bool(edge &, edge &)>> edges = edge_list;
-    int i = 0;
     while (edges.top().length < epsilon)
     {
         edge e = edges.top();
