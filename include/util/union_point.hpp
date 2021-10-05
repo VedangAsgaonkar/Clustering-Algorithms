@@ -1,7 +1,7 @@
 #ifndef _UNION_POINT_H_
 #define _UNION_POINT_H_
 
-#include "point.hpp"
+#include "include/util/point.hpp"
 #include <string>
 #include<cmath>
 

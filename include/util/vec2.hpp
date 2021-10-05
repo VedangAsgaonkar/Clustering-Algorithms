@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "matrix2.hpp"
+#include "include/util/matrix2.hpp"
 
 class vec2
 {

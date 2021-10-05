@@ -1,4 +1,4 @@
-#include "union_point.hpp"
+#include "include/util/union_point.hpp"
 
 union_point::union_point() : point()
 {

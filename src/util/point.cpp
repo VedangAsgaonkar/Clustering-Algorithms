@@ -1,4 +1,4 @@
-#include "point.hpp"
+#include "include/util/point.hpp"
 
 point::point()
 {

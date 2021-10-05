@@ -1,4 +1,4 @@
-#include "hierarchicalEstimator.hpp"
+#include "include/cluster/hierarchicalEstimator.hpp"
 
 hierarchicalEstimator::hierarchicalEstimator(point *point_list, int n)
 {

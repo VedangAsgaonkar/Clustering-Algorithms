@@ -1,4 +1,4 @@
-#include "densityBasedEstimator.hpp"
+#include "include/cluster/densityBasedEstimator.hpp"
 #include <queue>
 #include <iterator>
 #include <tuple>

@@ -9,7 +9,7 @@
 #include <string>
 #include <mutex>
 #include <condition_variable>
-#include "point.hpp"
+#include "include/util/point.hpp"
 
 void makecanvas(int xdim, int ydim, bool &start, std::condition_variable &cv_creation, bool &stop, std::condition_variable &cv_destruction, std::unique_lock<std::mutex> &lck_destruction);
 

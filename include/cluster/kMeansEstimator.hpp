@@ -1,7 +1,7 @@
 #ifndef _KMEANSESTIMATOR_H_
 #define _KMEANSESTIMATOR_H_
 
-#include "point.hpp"
+#include "include/util/point.hpp"
 #include<map>
 
 class kMeansEstimator

@@ -1,7 +1,7 @@
 #ifndef _RANGE_POINT_H_
 #define _RANGE_POINT_H_
 
-#include "point.hpp"
+#include "include/util/point.hpp"
 #include<unordered_set>
 
 class range_point : public point{

@@ -1,7 +1,7 @@
 #ifndef _EDGE_H_
 #define _EDGE_H_
 
-#include "union_point.hpp"
+#include "include/util/union_point.hpp"
 
 class edge
 {

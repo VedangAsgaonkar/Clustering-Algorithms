@@ -1,9 +1,9 @@
 #ifndef _GAUSIANESTIMATOR_H_
 #define _GAUSIANESTIMATOR_H_
 
-#include"point.hpp"
-#include"vec2.hpp"
-#include"matrix2.hpp"
+#include"include/util/point.hpp"
+#include"include/util/vec2.hpp"
+#include"include/util/matrix2.hpp"
 #include<map>
 
 class gaussianEstimator

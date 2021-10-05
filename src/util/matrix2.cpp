@@ -1,4 +1,4 @@
-#include "matrix2.hpp"
+#include "include/util/matrix2.hpp"
 
 matrix2::matrix2()
 {

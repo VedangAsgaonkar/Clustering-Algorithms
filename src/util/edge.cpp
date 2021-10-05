@@ -1,4 +1,4 @@
-#include "edge.hpp"
+#include "include/util/edge.hpp"
 
 edge::edge(union_point *first, union_point *second)
 {

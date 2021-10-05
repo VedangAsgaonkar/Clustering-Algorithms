@@ -1,4 +1,4 @@
-#include "gaussianEstimator.hpp"
+#include "include/cluster/gaussianEstimator.hpp"
 #include <cmath>
 
 gaussianEstimator::gaussianEstimator(point *point_list, int n)

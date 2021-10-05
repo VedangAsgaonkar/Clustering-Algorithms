@@ -1,8 +1,8 @@
 #ifndef _HIERARCHICALESTIMATOR_H_
 #define _HIERARCHICALESTIMATOR_H_
 
-#include "union_point.hpp"
-#include "edge.hpp"
+#include "include/util/union_point.hpp"
+#include "include/util/edge.hpp"
 #include <map>
 #include <queue>
 #include <functional>

@@ -1,7 +1,7 @@
 #ifndef _DENSITY_BASED_ESTIMATOR_H_
 #define _DENSITY_BASED_ESTIMATOR_H_
 
-#include "range_point.hpp"
+#include "include/util/range_point.hpp"
 #include <map>
 
 class densityBasedEstimator

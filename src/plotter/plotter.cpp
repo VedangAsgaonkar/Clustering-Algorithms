@@ -1,4 +1,4 @@
-#include "plotter.hpp"
+#include "include/plotter/plotter.hpp"
 #include <string>
 
 plotter::plotter(int xdim, int ydim)
