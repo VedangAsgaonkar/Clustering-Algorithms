@@ -67,6 +67,22 @@ void plotter::labelClusterPlot(std::string *labels, int n)
     }
 }
 
+void plotter::labelClusterPlot(int *labels, int n)
+{
+    int cnt = 0;
+    int curr_label = labels[0];
+    data[0].setColor(colors[cnt]);
+    for (int i = 1; i < n; i++)
+    {
+        if (curr_label != labels[i])
+        {
+            cnt++;
+            curr_label = labels[i];
+        }
+        data[i].setColor(colors[cnt]);
+    }
+}
+
 void plotter::clear()
 {
     delete[] data;

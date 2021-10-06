@@ -1,3 +1,4 @@
+
 #ifndef _PLOTTER_H_
 #define _PLOTTER_H_
 
@@ -32,10 +33,49 @@ public:
     bool resume;
     std::condition_variable cv_creation;
     std::condition_variable cv_destruction;
+
+    /**
+     * @brief Construct a new plotter object
+     * 
+     * @param xdim width of the plotter window
+     * @param ydim height of the plotter window
+     */
     plotter(int xdim, int ydim);
+
+    /**
+     * @brief Create a Cluster Plot object
+     * 
+     * @param point_list array of points to plot
+     * @param n number of points
+     */
     void createClusterPlot(point *point_list, int n);
+
+    /**
+     * @brief Provide labels to points to allow color-coding
+     * 
+     * @param labels array of labels
+     * @param n number of labels
+     */
     void labelClusterPlot(std::string *labels, int n);
+
+    /**
+     * @brief Provide labels to points to allow color-coding
+     * 
+     * @param labels array of labels
+     * @param n number of labels
+     */
+    void labelClusterPlot(int *labels, int n);
+
+    /**
+     * @brief Clear the plot
+     * 
+     */
     void clear();
+
+    /**
+     * @brief Destroy the plotter object
+     * 
+     */
     ~plotter();
 };
 
