@@ -4,10 +4,10 @@
 #include <cmath>
 #include <cstdlib>
 #include "include/util/point.hpp"
-// #include "include/cluster/kMeansEstimator.hpp"
-// #include "include/cluster/densityBasedEstimator.hpp"
+#include "include/cluster/kMeansEstimator.hpp"
+#include "include/cluster/densityBasedEstimator.hpp"
 #include "include/cluster/gaussianEstimator.hpp"
-// #include "include/cluster/hierarchicalEstimator.hpp"
+#include "include/cluster/hierarchicalEstimator.hpp"
 #include "include/plotter/plotter.hpp"
 
 int main()
