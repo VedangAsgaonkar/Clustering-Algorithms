@@ -101,6 +101,7 @@ std::multimap<int, int> densityBasedEstimator::cluster(int min_pts) const
             k++;
         }
     }
+    delete[] aux_point_list;
     wait(5);
     return clusters;
 }

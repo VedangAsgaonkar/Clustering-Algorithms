@@ -4,10 +4,10 @@
 #include <cmath>
 #include <cstdlib>
 #include "include/util/point.hpp"
-#include "include/cluster/kMeansEstimator.hpp"
-#include "include/cluster/densityBasedEstimator.hpp"
+// #include "include/cluster/kMeansEstimator.hpp"
+// #include "include/cluster/densityBasedEstimator.hpp"
 #include "include/cluster/gaussianEstimator.hpp"
-#include "include/cluster/hierarchicalEstimator.hpp"
+// #include "include/cluster/hierarchicalEstimator.hpp"
 #include "include/plotter/plotter.hpp"
 
 int main()
@@ -20,28 +20,31 @@ int main()
     {
         if (i < 200)
         {
+            double r = 5 * drand48();
             double theta = 6.28 * drand48();
-            x_list[i] = 5 * cos(theta);
-            y_list[i] = 5 * sin(theta);
+            x_list[i] = -5 + r * cos(theta);
+            y_list[i] = -5 + r * sin(theta);
         }
         else if (i < 300)
         {
-            double theta = (3.14 / 3) + (3.14 / 3) * drand48();
-            x_list[i] = 3 * cos(theta);
-            y_list[i] = -3 * sin(theta);
+            double r = 2 * drand48();
+            double theta = 6.28 * drand48();
+            x_list[i] = 4 + r * cos(theta);
+            y_list[i] = 2 + r * sin(theta);
         }
         else if (i < 400)
         {
-            double theta = (3.14 / 3) + (3.14 / 3) * drand48();
-            x_list[i] = 3 * cos(theta);
-            y_list[i] = 3 * sin(theta);
+            double r = 2.5 * drand48();
+            double theta = 6.28 * drand48();
+            x_list[i] = r * cos(theta);
+            y_list[i] = 3 + r * sin(theta);
         }
         point_list[i].x = x_list[i];
         point_list[i].y = y_list[i];
     }
     std::cout << "type,x,y" << std::endl;
-    densityBasedEstimator *h = new densityBasedEstimator(point_list, 400, 2);
-    std::multimap<int, int> mp = h->cluster(2);
+    gaussianEstimator *h = new gaussianEstimator(point_list, 400);
+    std::multimap<int, int> mp = h->cluster(3, 10);
     for (auto i = mp.begin(); i != mp.end(); i++)
     {
         std::cout << i->first << "," << x_list[i->second] << "," << y_list[i->second] << std::endl;

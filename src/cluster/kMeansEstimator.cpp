@@ -26,8 +26,6 @@ kMeansEstimator::kMeansEstimator(double *xlist, double *ylist, int n)
 
 std::multimap<int, int> kMeansEstimator::cluster(int k, int iter) const
 {
-    // int gd = DETECT, gm;
-    // initgraph(&gd, &gm, NULL);
 
     std::vector<std::multimap<int, int>> set_clusters;
     std::vector<double> dispersions;

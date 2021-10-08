@@ -71,7 +71,7 @@ void plotter::createClusterPlot(point *point_list, int n)
     for (int i = 0; i < n; i++)
     {
         double x = (this->xdim/10.0)+(8*this->xdim/10.0)*((point_list[i].x - x_min)/(x_max-x_min));
-        double y = (this->ydim/10.0)+(8*this->ydim/10.0)*((point_list[i].y - y_min)/(y_max-y_min));
+        double y = (this->ydim/10.0)+(8*this->ydim/10.0)*((y_max - point_list[i].y)/(y_max-y_min));
         data[i] = Circle(x, y, 6);
         data[i].setFill(true);
     }

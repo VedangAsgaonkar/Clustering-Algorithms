@@ -1,4 +1,5 @@
 #include "include/cluster/gaussianEstimator.hpp"
+#include "include/plotter/plotter.hpp"
 #include <cmath>
 
 gaussianEstimator::gaussianEstimator(point *point_list, int n)
@@ -39,6 +40,15 @@ std::multimap<int, int> gaussianEstimator::cluster(int k, int iter) const
     double min_x = vec_list[0].e[0];
     double max_y = vec_list[0].e[1];
     double min_y = vec_list[0].e[1];
+    plotter p(400, 400);
+    point *point_list = new point[n];
+    for (int i = 0; i < n; i++)
+    {
+        point_list[i].x = vec_list[i].e[0];
+        point_list[i].y = vec_list[i].e[1];
+    }
+    p.createClusterPlot(point_list, n);
+
     for (int i = 1; i < n; i++)
     {
         if (max_x < vec_list[i].e[0])
@@ -124,6 +134,7 @@ std::multimap<int, int> gaussianEstimator::cluster(int k, int iter) const
                         covariances[previous_cluster] = (sum2 / cnt) - outer_product(means[previous_cluster], means[previous_cluster]);
                     }
                 }
+                previous_cluster = it->first;
                 sum.e[0] = 0;
                 sum.e[1] = 0;
                 sum2.a[0][0] = 0;
@@ -138,6 +149,15 @@ std::multimap<int, int> gaussianEstimator::cluster(int k, int iter) const
             means[previous_cluster] = sum / cnt;
             covariances[previous_cluster] = (sum2 / cnt) - outer_product(means[previous_cluster], means[previous_cluster]);
         }
+        int labels[n];
+        int index = 0;
+        for (auto i = clusters.begin(); i != clusters.end(); i++)
+        {
+            labels[index] = i->first;
+            index++;
+        }
+        p.labelClusterPlot(labels, n);
+        wait(0.5);
     }
 
     return clusters;
