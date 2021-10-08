@@ -25,8 +25,8 @@ plotter::plotter(int xdim, int ydim)
 void makecanvas(int xdim, int ydim, bool &start, std::condition_variable &cv_creation, bool &stop, std::condition_variable &cv_destruction, std::unique_lock<std::mutex> &lck_destruction)
 {
     initCanvas("Plot", xdim, ydim);
-    Line x_axis(0, ydim / 2, xdim, ydim / 2);
-    Line y_axis(xdim / 2, 0, xdim / 2, ydim);
+    // Line x_axis(0, ydim / 2, xdim, ydim / 2);
+    // Line y_axis(xdim / 2, 0, xdim / 2, ydim);
     start = true;
     cv_creation.notify_all();
     while (!stop)
@@ -43,10 +43,36 @@ void plotter::createClusterPlot(point *point_list, int n)
         cv_creation.wait(lck_creation);
     }
     start = false;
+    double x_min = INFINITY;
+    double x_max = -INFINITY;
+    double y_min = INFINITY;
+    double y_max = -INFINITY;
+
+    for(int i=0 ; i<n ; i++)
+    {
+        if(point_list[i].x < x_min)
+        {
+            x_min = point_list[i].x;
+        }
+        if(point_list[i].x > x_max)
+        {
+            x_max = point_list[i].x;
+        }
+        if(point_list[i].y < y_min)
+        {
+            y_min = point_list[i].y;
+        }
+        if(point_list[i].y > y_max)
+        {
+            y_max = point_list[i].y;
+        }
+    }
     data = new Circle[n];
     for (int i = 0; i < n; i++)
     {
-        data[i] = Circle(point_list[i].x, point_list[i].y, 4);
+        double x = (this->xdim/10.0)+(8*this->xdim/10.0)*((point_list[i].x - x_min)/(x_max-x_min));
+        double y = (this->ydim/10.0)+(8*this->ydim/10.0)*((point_list[i].y - y_min)/(y_max-y_min));
+        data[i] = Circle(x, y, 6);
         data[i].setFill(true);
     }
 }

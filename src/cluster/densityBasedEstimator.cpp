@@ -1,4 +1,5 @@
 #include "include/cluster/densityBasedEstimator.hpp"
+#include "include/plotter/plotter.hpp"
 #include <queue>
 #include <iterator>
 #include <tuple>
@@ -25,6 +26,7 @@ densityBasedEstimator::densityBasedEstimator(point *point_list, int n, double ep
                 this->point_list[j].neighbours.insert(&this->point_list[i]);
             }
         }
+
     }
 }
 
@@ -55,6 +57,15 @@ std::multimap<int, int> densityBasedEstimator::cluster(int min_pts) const
 {
     std::multimap<int, int> clusters;
     int k = 0;
+    plotter pl(400, 400);
+    point *aux_point_list = new point[n];
+    for(int i=0 ; i<n ; i++)
+    {
+        aux_point_list[i].x = point_list[i].x;
+        aux_point_list[i].y = point_list[i].y;
+    }
+    pl.createClusterPlot(aux_point_list, n);
+
     for (int i = 0; i < n; i++)
     {
         if (!point_list[i].clustered)
@@ -78,10 +89,19 @@ std::multimap<int, int> densityBasedEstimator::cluster(int min_pts) const
                         }
                     }
                 }
+                int labels[n];
+                int index = 0;
+                for (auto i = clusters.begin(); i != clusters.end(); i++)
+                {
+                    labels[index] = i->first;
+                    index++;
+                }
+                pl.labelClusterPlot(labels, index);
             }
             k++;
         }
     }
+    wait(5);
     return clusters;
 }
 
