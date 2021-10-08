@@ -5,6 +5,10 @@
 #include <string>
 #include<cmath>
 
+/**
+ * @brief Extends point to allow for finding union of sets
+ * 
+ */
 class union_point : public point
 {
 public:

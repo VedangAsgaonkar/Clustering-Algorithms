@@ -32,9 +32,9 @@ public:
     /**
      * @brief Perform k means clustering
      * 
-     * @param k k value
+     * @param k number of clusters
      * @param iter number of iterations
-     * @return std::multimap<int,int> multimap of cluster number to point index
+     * @return std::multimap<int,int>
      */
     std::multimap<int,int> cluster(int k, int iter) const;
 

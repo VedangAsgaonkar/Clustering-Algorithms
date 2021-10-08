@@ -6,6 +6,10 @@
 
 #include "include/util/matrix2.hpp"
 
+/**
+ * @brief Implements a two dimensional vector
+ * 
+ */
 class vec2
 {
 public:

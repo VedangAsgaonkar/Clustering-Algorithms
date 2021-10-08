@@ -4,6 +4,10 @@
 #include "include/util/point.hpp"
 #include<unordered_set>
 
+/**
+ * @brief Extends point to allow for storing neighbours
+ * 
+ */
 class range_point : public point{
 public:
     std::unordered_set<range_point*> neighbours;

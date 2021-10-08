@@ -5,6 +5,10 @@
 #include<iostream>
 #include<cmath>
 
+/**
+ * @brief Implements a basic point in two dimensions
+ * 
+ */
 class point{
 public:
     double x;

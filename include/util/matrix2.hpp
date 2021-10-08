@@ -3,7 +3,10 @@
 
 #include <iostream>
 
-
+/**
+ * @brief Implements basic matrix operations on 2x2 matrices
+ * 
+ */
 class matrix2
 {
 public:

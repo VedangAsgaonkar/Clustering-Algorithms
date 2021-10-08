@@ -3,6 +3,10 @@
 
 #include "include/util/union_point.hpp"
 
+/**
+ * @brief Implements edge between two union points
+ * 
+ */
 class edge
 {
 public:
