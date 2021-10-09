@@ -1,5 +1,6 @@
 #include "include/plotter/plotter.hpp"
 #include <string>
+#include <sstream>
 
 plotter::plotter(int xdim, int ydim)
 {
@@ -48,32 +49,52 @@ void plotter::createClusterPlot(point *point_list, int n)
     double y_min = INFINITY;
     double y_max = -INFINITY;
 
-    for(int i=0 ; i<n ; i++)
+    for (int i = 0; i < n; i++)
     {
-        if(point_list[i].x < x_min)
+        if (point_list[i].x < x_min)
         {
             x_min = point_list[i].x;
         }
-        if(point_list[i].x > x_max)
+        if (point_list[i].x > x_max)
         {
             x_max = point_list[i].x;
         }
-        if(point_list[i].y < y_min)
+        if (point_list[i].y < y_min)
         {
             y_min = point_list[i].y;
         }
-        if(point_list[i].y > y_max)
+        if (point_list[i].y > y_max)
         {
             y_max = point_list[i].y;
         }
     }
+    xaxis = new Line(0, 19 * ydim / 20, 19 * xdim / 20, 19 * ydim / 20);
+    yaxis = new Line(xdim / 20, ydim / 20, xdim / 20, ydim);
+    xlabel = new Text(19 * xdim / 20, 39 * ydim / 40, "x");
+    ylabel = new Text(xdim / 40, ydim / 40, "y");
+    xticks = new Line[9];
+    yticks = new Line[9];
+    xscales = new Text[9];
+    yscales = new Text[9];
     data = new Circle[n];
     for (int i = 0; i < n; i++)
     {
-        double x = (this->xdim/10.0)+(8*this->xdim/10.0)*((point_list[i].x - x_min)/(x_max-x_min));
-        double y = (this->ydim/10.0)+(8*this->ydim/10.0)*((y_max - point_list[i].y)/(y_max-y_min));
+        double x = (this->xdim / 10.0) + (8 * this->xdim / 10.0) * ((point_list[i].x - x_min) / (x_max - x_min));
+        double y = (this->ydim / 10.0) + (8 * this->ydim / 10.0) * ((y_max - point_list[i].y) / (y_max - y_min));
         data[i] = Circle(x, y, 6);
         data[i].setFill(true);
+    }
+    for (int i = 1; i <= 9; i++)
+    {
+        std::ostringstream ss1, ss2;
+        ss1.precision(2);
+        ss2.precision(2);
+        ss1 << std::fixed << x_min + (i - 1) * (x_max - x_min) * 8;
+        ss2 << std::fixed << y_min + (i - 1) * (y_max - y_min) * 8;
+        xticks[i - 1] = Line(i * xdim / 10, 19 * ydim / 20, i * xdim / 10, 39 * ydim / 40);
+        yticks[i - 1] = Line(xdim / 40, (10 - i) * ydim / 10, xdim / 20, (10 - i) * ydim / 10);
+        xscales[i - 1] = Text(i * xdim / 10, 39 * ydim / 40, ss1.str());
+        yscales[i - 1] = Text(xdim / 40, (10 - i) * ydim / 10, ss2.str());
     }
 }
 
@@ -112,12 +133,28 @@ void plotter::labelClusterPlot(int *labels, int n)
 void plotter::clear()
 {
     delete[] data;
+    delete xaxis;
+    delete yaxis;
+    delete xlabel;
+    delete ylabel;
+    delete[] xticks;
+    delete[] yticks;
+    delete[] xscales;
+    delete[] yscales;
     resume = true;
 }
 
 plotter::~plotter()
 {
     delete[] data;
+    delete xaxis;
+    delete yaxis;
+    delete xlabel;
+    delete ylabel;
+    delete[] xticks;
+    delete[] yticks;
+    delete[] xscales;
+    delete[] yscales;
     stop = true;
     cv_destruction.notify_all();
     guiThread.join();

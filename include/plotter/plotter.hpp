@@ -21,6 +21,14 @@ private:
     int ydim;
     std::thread guiThread;
     Circle *data;
+    Line* xaxis;
+    Line* yaxis;
+    Text* xlabel;
+    Text* ylabel;
+    Line* xticks;
+    Line* yticks;
+    Text* xscales;
+    Text* yscales;
     std::unordered_map<int, int> colors;
     std::mutex mtx_creation;
     std::unique_lock<std::mutex> lck_creation;

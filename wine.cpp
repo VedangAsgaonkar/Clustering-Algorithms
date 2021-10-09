@@ -37,7 +37,7 @@ int main()
     {
         std::cout << i->first << "," << point_list[i->second].x << "," << point_list[i->second].y << std::endl;
     }
-    plotter p(400, 400);
+    plotter p(600, 600);
     p.createClusterPlot(point_list, 150);
     int labels[150];
     int index = 0;
