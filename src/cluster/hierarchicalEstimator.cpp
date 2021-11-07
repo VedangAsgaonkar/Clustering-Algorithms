@@ -7,9 +7,9 @@ hierarchicalEstimator::hierarchicalEstimator(point *point_list, int n)
     edge_list = std::priority_queue<edge, std::vector<edge>, std::function<bool(edge &, edge &)>>(CompareEdge);
     for (int i = 0; i < n; i++)
     {
-        this->union_point_list[i].x = union_point_list[i].x;
-        this->union_point_list[i].y = union_point_list[i].y;
-        this->union_point_list[i].label = union_point_list[i].label;
+        this->union_point_list[i].x = point_list[i].x;
+        this->union_point_list[i].y = point_list[i].y;
+        this->union_point_list[i].label = point_list[i].label;
         this->union_point_list[i].cluster_number = i;
         for (int j = 0; j < i; j++)
         {
@@ -39,11 +39,10 @@ std::multimap<int, int> hierarchicalEstimator::cluster(int k) const
 {
     std::priority_queue<edge, std::vector<edge>, std::function<bool(edge &, edge &)>> edges = edge_list;
     int i = 0;
-    // std::cout << n<< std::endl;
 
     while (i < n - k)
     {
-        // std::cout << i << std::endl;
+        std::cout << edges.size() << std::endl;
         edge e = edges.top();
         edges.pop();
         union_point *ptr1 = e.first;

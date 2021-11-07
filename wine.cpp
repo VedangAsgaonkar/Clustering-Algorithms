@@ -7,7 +7,6 @@
 #include <fstream>
 #include "include/util/point.hpp"
 #include "include/cluster/kMeansEstimator.hpp"
-// #include "include/cluster/gaussianEstimator.hpp"
 #include "include/plotter/plotter.hpp"
 
 int main()
@@ -17,8 +16,8 @@ int main()
     point *point_list = new point[150];
     std::fstream infile1;
     std::fstream infile2;
-    infile1.open("alc.csv", std::ios::in);
-    infile2.open("hue.csv", std::ios::in);
+    infile1.open("data/alc.csv", std::ios::in);
+    infile2.open("data/hue.csv", std::ios::in);
 
     for(int i=0 ; i<150 ; i++)
     {

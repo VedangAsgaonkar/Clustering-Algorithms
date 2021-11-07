@@ -4,7 +4,7 @@
 #include <cmath>
 #include <cstdlib>
 #include "include/util/point.hpp"
-#include "include/cluster/gaussianEstimator.hpp"
+#include "include/cluster/hierarchicalEstimator.hpp"
 #include "include/plotter/plotter.hpp"
 
 int main()
@@ -17,31 +17,24 @@ int main()
     {
         if (i < 200)
         {
-            double r = 5 * drand48();
             double theta = 6.28 * drand48();
-            x_list[i] = -5 + r * cos(theta);
-            y_list[i] = -5 + r * sin(theta);
-        }
-        else if (i < 300)
-        {
-            double r = 2 * drand48();
-            double theta = 6.28 * drand48();
-            x_list[i] = 4 + r * cos(theta);
-            y_list[i] = 2 + r * sin(theta);
-        }
-        else if (i < 400)
-        {
-            double r = 2.5 * drand48();
-            double theta = 6.28 * drand48();
+            double r = 5 - 3 * (theta) / 6.28;
             x_list[i] = r * cos(theta);
-            y_list[i] = 3 + r * sin(theta);
+            y_list[i] = r * sin(theta);
+        }
+        else
+        {
+            double theta = 6.28 * drand48();
+            double r = 5 - 3 * (theta) / 6.28;
+            x_list[i] = r * cos(theta + 3.14);
+            y_list[i] = r * sin(theta + 3.14);
         }
         point_list[i].x = x_list[i];
         point_list[i].y = y_list[i];
     }
     std::cout << "type,x,y" << std::endl;
-    gaussianEstimator *h = new gaussianEstimator(point_list, 400);
-    std::multimap<int, int> mp = h->cluster(3, 10);
+    hierarchicalEstimator *h = new hierarchicalEstimator(point_list, 400);
+    std::multimap<int, int> mp = h->cluster(3);
     for (auto i = mp.begin(); i != mp.end(); i++)
     {
         std::cout << i->first << "," << x_list[i->second] << "," << y_list[i->second] << std::endl;
