@@ -34,7 +34,7 @@ int main()
     }
     std::cout << "type,x,y" << std::endl;
     hierarchicalEstimator *h = new hierarchicalEstimator(point_list, 400);
-    std::multimap<int, int> mp = h->cluster(3);
+    std::multimap<int, int> mp = h->cluster(2);
     for (auto i = mp.begin(); i != mp.end(); i++)
     {
         std::cout << i->first << "," << x_list[i->second] << "," << y_list[i->second] << std::endl;
