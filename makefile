@@ -3,7 +3,7 @@ PLOTTER=src/plotter
 UTIL=src/util
 SIMPLECPP=/home/vedang/Desktop/util/simplecpp
 CFLAGS=-I/usr/include/X11 -L/usr/X11R6/lib -lX11 -std=c++11 -pthread
-WORKING_DIRECTORY=/home/vedang/Desktop/IITNotes/'second year'/CS293/Project
+WORKING_DIRECTORY=.
 
 main : main.cpp
 	g++ main.cpp $(CLUSTER)/gaussianEstimator.cpp $(PLOTTER)/plotter.cpp $(UTIL)/point.cpp $(UTIL)/vec2.cpp $(UTIL)/matrix2.cpp $(SIMPLECPP)/lib/libsprite.a -I$(WORKING_DIRECTORY) -I$(SIMPLECPP)/include $(CFLAGS) -o main
