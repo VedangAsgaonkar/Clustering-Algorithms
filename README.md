@@ -1,6 +1,6 @@
 # Clustering Algorithms [![Linux GCC](https://github.com/Physicc/Light/actions/workflows/linux-gcc.yml/badge.svg)](https://github.com/Physicc/Light/actions/workflows/linux-gcc.yml)
 
-For the CS293 Project, I have exercised option 3, with Professor's approval and have taken up a project on **clustering algorithms**. 
+This is a project made for the CS293 course at IITB.
 
 ## Supported Platforms:
 * Ubuntu 20
